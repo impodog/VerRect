@@ -171,6 +171,7 @@ def distance(P1:Pos,P2:Pos)->float:return math.hypot(P1[0]-P2[0],P1[1]-P2[1])
 def sgo(start:Pos,end:Pos,realstart:Pos):return realstart[0]+end[0]-start[0],realstart[1]+end[1]-start[1]
 class dire:
     def __init__(self,start:Pos, end:Pos, speed:float):
+        if speed == 0:raise ValueError("Cannot create no speed direction")
         xshift=end[0]-start[0]
         yshift=end[1]-start[1]
         self.speed=speed
@@ -183,6 +184,9 @@ class dire:
             b=((yshift/xshift) if xshift != 0 else 0)
             self.x=math.sqrt((speed**2)/(b**2+1))*symbol(xshift)
             self.y=b*self.x
+        self.angle=math.degrees(math.acos(xshift/speed))
+        "The clockwise turn angle from positive x axis"
+        if yshift < 0:self.angle+=180
         self.s=(self.x,self.y)
         self.sym=(symbol(self.x),symbol(self.y))
     @property
