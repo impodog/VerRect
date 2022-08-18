@@ -185,8 +185,7 @@ class dire:
             self.x=math.sqrt((speed**2)/(b**2+1))*symbol(xshift)
             self.y=b*self.x
         self.angle=math.degrees(math.acos(self.x/speed))
-        "The clockwise turn angle from positive x axis"
-        if yshift < 0:self.angle=(-self.angle) + 180
+        "The azimuth from positive x axis"
         self.s=(self.x,self.y)
         self.sym=(symbol(self.x),symbol(self.y))
     @property
