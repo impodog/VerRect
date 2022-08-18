@@ -186,6 +186,7 @@ class dire:
             self.y=b*self.x
         self.angle=math.degrees(math.acos(self.x/speed))
         "The azimuth from positive x axis"
+        if yshift < 0:self.angle=-self.angle
         self.s=(self.x,self.y)
         self.sym=(symbol(self.x),symbol(self.y))
     @property
